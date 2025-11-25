@@ -1,12 +1,12 @@
 just run the jar. everything is in there.
 
 sound sources:
-- Tony Hawk pro Skater (combo sound)
-- ableton sample packs (combo down sound, new level sound, and drums for ost)
-- Boards of Canada - wildlife analysis - sampled in ost
+- Tony Hawk Pro Skater (combo sound)
+- Ableton sample packs (combo down sound, new level sound, and drums for ost)
+- Boards of Canada - Wildlife Analysis - sampled in ost
 
 image sources:
-- stock image of the sky, pixabay
+- stock image of the sky, Pixabay
 - drawings by me
 
 code sources:
