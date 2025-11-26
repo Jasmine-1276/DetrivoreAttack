@@ -13,3 +13,8 @@ code sources:
 - stackoverflow, multiple users
 - geeks4geeks
 - baeldung
+
+to be added:
+- this or that powerup choices after new levels
+- new enemy types
+- bosses
