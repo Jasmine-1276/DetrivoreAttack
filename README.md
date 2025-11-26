@@ -1,4 +1,4 @@
-just run the jar. everything is in there.
+just run the jar. everything is in there. (use jdk 23.0.1+)
 
 sound sources:
 - Tony Hawk Pro Skater (combo sound)
