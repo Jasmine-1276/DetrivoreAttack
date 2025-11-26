@@ -17,8 +17,8 @@ public class alien2 extends Entity{
         double tx = temp[0];
         double ty = temp[1];
 
-        double vx = tx - (this.x + 15);
-        double vy = ty - (this.y + 15);
+        double vx = tx - (this.x + 5);
+        double vy = ty - (this.y + 5);
 
         double len = Math.sqrt(vx*vx + vy*vy);
 
