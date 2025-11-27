@@ -37,9 +37,9 @@ public class alien2 extends Entity{
             game.alienshoot((int)this.x, (int)this.y, (int)(vy*200), (int)(vx*200));
         }
 
-        spintime += delta/1000000;
+        spintime += delta;
         if (Math.abs(this.dx) > 0 || Math.abs(this.dy) > 0){
-        if (spintime > 250){
+        if (spintime > 250000000){
             spin = (spin != true);
             spintime = 0;
             if (spin){
@@ -49,7 +49,7 @@ public class alien2 extends Entity{
             }
         }
         } else {
-        if (spintime > 400){
+        if (spintime > 400000000){
             spin = (spin != true);
             spintime = 0;
             if (spin){

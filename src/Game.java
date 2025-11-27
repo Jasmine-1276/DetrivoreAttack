@@ -25,6 +25,7 @@ public class Game extends Canvas {
         private boolean temp = false;
         private boolean debug = false;
         private String HS = "";
+        private int a3count = 0;
         private int best = getScore();
         private final int tileSize = 10;
         private int tutorial = 0;
@@ -38,7 +39,7 @@ public class Game extends Canvas {
         private long firingInterval = 100; // interval between shots (ms)
         private int shadowtime = 0;
         private int round = 1;
-        private int alienN = 1;
+        private int alienN = 0;
         private int count = 0;
         private int combocount;
         private int combo;
@@ -178,7 +179,7 @@ public class Game extends Canvas {
             best = round;
           }
           round = 1;
-          alienN = 1;
+          alienN = 0;
           waitingForKeyPress = true;
           leftPressed = false;
           rightPressed = false;
@@ -265,7 +266,7 @@ public class Game extends Canvas {
                 try {
                 Entity me = (Entity)entities.get(i);
                 Entity him = (Entity)entities.get(j); 
-                if (!(me instanceof Tile && him instanceof Tile)){
+                if (!(me instanceof Tile && him instanceof Tile || me instanceof splat && him instanceof splat)){
                 if (me.collidesWith(him)) {
                   me.collidedWith(him);
                   him.collidedWith(me); }
@@ -442,6 +443,8 @@ public class Game extends Canvas {
             } catch (Exception e) {
             }
             entities.clear();
+            // ensure alien counter is reset when starting a fresh game
+            alienN = 0;
             initEntities();
             waitingForKeyPress = false;
             tutorial = 0;
@@ -684,6 +687,9 @@ long lasttime = 0;
 
     public void initAliens(){
 
+    alienN = 0;
+    a3count = 0;
+
     if (Math.abs(alienSpawners[0] - ship.getX()) < 100 && Math.abs(alienSpawners[1] - ship.getY()) < 100){
       if (alienSpawners[0] > ship.getX()){
         if ((alienSpawners[0] - ship.getX()) < 100){
@@ -720,15 +726,32 @@ long lasttime = 0;
 
     for (int i = 0; i < round; i++){
         if ((int) (Math.random() * 3) == 1){
-              alien2 aliena = new alien2(this, alienSpawners[0]+i*20, alienSpawners[1], round);
-              
-              entities.add(aliena);
-              
-        } else {
+          alien2 aliena = new alien2(this, alienSpawners[0]+i*20, alienSpawners[1], round); 
+          entities.add(aliena);
+          alienN++;
+        } else if ((int) (Math.random() * 3) == 2){
           alien1 alienb = new alien1(this, alienSpawners[2], alienSpawners[3]+i*30, round);
           entities.add(alienb);
-        }
+          alienN++;
+        } else {
+          if (a3count < 2 && round > 4){
+          a3count++;
+          alien3 alienc = new alien3(this, alienSpawners[0]+i*25, alienSpawners[3], round);
+          entities.add(alienc);
+          alienN++;
+        } else {
+          if ((int) (Math.random() * 2) == 1){
+            alien2 aliena = new alien2(this, alienSpawners[0]+i*20, alienSpawners[1], round); 
+            entities.add(aliena);
+            alienN++;
+          } else if ((int) (Math.random() * 3) == 0){
+            alien1 alienb = new alien1(this, alienSpawners[2], alienSpawners[3]+i*30, round);
+            entities.add(alienb);
+            alienN++;
+          }
+          }
       }
+    }
     }
 
     public void alienDead(){
@@ -795,7 +818,6 @@ long lasttime = 0;
       if (alienN <= 0){
         alienN = 0;
         round++;
-        alienN += round;
         count++;
         ship.heal();
         if (count == 2){
@@ -894,6 +916,10 @@ long lasttime = 0;
             e.printStackTrace();
             return 0; 
         }
+    }
+
+    public void splat(splat s) {
+      entities.add(0, s);
     }
 
     public void recordScore(int score) {

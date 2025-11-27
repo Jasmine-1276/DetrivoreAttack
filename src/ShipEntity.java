@@ -7,6 +7,7 @@ public class ShipEntity extends Entity {
   private Game game; // the game in which the ship exists
   private int hp;
   private int state;
+  private int count = 0;
   /* construct the player's ship
    * input: game - the game in which the ship is being created
    *        ref - a string with the name of the image associated to
@@ -17,6 +18,7 @@ public class ShipEntity extends Entity {
     super(r, newX, newY);  // calls the constructor in Entity
     this.hp = hp;
     game = g;
+
   } // constructor
 
   /* move
@@ -90,11 +92,20 @@ public class ShipEntity extends Entity {
       }
     }
 
-    if (other instanceof alien1 || other instanceof alien2){
+    if (other instanceof alien1 || other instanceof alien2 || other instanceof alien3){
       
       hit();
       game.alienDead();
       game.decombo();
+      game.removeEntity(other);
+    }
+
+    if (other instanceof splat) {
+      count++;
+      if (count > 4){
+        hit();
+        count = 0;
+      } 
       game.removeEntity(other);
     }
 

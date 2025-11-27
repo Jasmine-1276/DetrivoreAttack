@@ -29,8 +29,8 @@ public void move (long delta){
         vy /= len;
     }
 
-    spintime += delta/1000000;
-    if (spintime > 500){
+    spintime += delta;
+    if (spintime > 500000000){
         spin = (spin != true);
         spintime = 0;
         if (spin){

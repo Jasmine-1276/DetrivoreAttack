@@ -55,8 +55,8 @@ public class ShotEntity extends Entity {
       game.removeEntity(this);
     } // if
 
-    spintime += delta/1000000;
-    if (spintime > 100){
+    spintime += delta;
+    if (spintime > 100000000){
       spin = (spin != true);
       spintime = 0;
       if (spin){
