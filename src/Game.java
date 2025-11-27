@@ -681,7 +681,7 @@ long lasttime = 0;
       lasttime = System.currentTimeMillis();}
     }
 
-    public void death(int x, int y, int msx, int msy, String r, boolean h){
+    public void death(int x, int y, int msx, int msy, String r, double h){
       entities.add(new dead(this, x, y, msx, msy, r, h));
     }
 

@@ -3,36 +3,30 @@ public class dead extends Entity{
     private long lasttime = 0;
     private long bouncetime = 0;
     private long spawn = 0;
-    private boolean heavy = true;
-    public dead(Game game, int x, int y, int msx, int msy, String r, boolean heavy){
+    private double weight;
+    public dead(Game game, int x, int y, int msx, int msy, String r, double weight){
         super(r, x, y);
         this.dx = msx;
         this.dy = msy;
         this.spawn = System.currentTimeMillis();
-        this.heavy = heavy;
+        this.weight = weight;
         g = game;
     }
 
     public void move(long delta){
     if (lasttime - System.currentTimeMillis() < -200){
-        if (heavy){
-            this.dx /= 2;
-            this.dy /= 2;}
-        else{
-            this.dx /= 1.5;
-            this.dy /= 1.5;
-        }
+            this.dx /= weight;
+            this.dy /= weight;
     lasttime = System.currentTimeMillis();}
         super.move(delta);
 
     if (System.currentTimeMillis() - spawn >= 2500){
         g.removeEntity(this);
-    }
-    }
+    }}
 
     @Override
     public void collidedWith(Entity other) {
-        if (other instanceof Tile){
+        if (other instanceof Tile && this.weight > 1){
             if (bouncetime - System.currentTimeMillis() < -100){
             this.dx *= -0.7;
             this.dy *= -0.7;

@@ -72,7 +72,7 @@ public void move (long delta){
         hp--;
         }
         if (hp < 1 && !dead){
-        game.death((int)this.x, (int)this.y, (int)other.getHorizontalMovement(), (int)other.getVerticalMovement(), "sprites/dead1.png", true);
+        game.death((int)this.x, (int)this.y, (int)other.getHorizontalMovement()/200, 200, "sprites/dead4.png", 0.9);
         dead = true;
         game.alienDead();
         game.removeEntity(this);

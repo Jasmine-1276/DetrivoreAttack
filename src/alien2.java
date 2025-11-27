@@ -74,7 +74,7 @@ public class alien2 extends Entity{
         game.removeEntity(shot);
         hp -= 1+ game.getcombo()/2;}
         if (hp < 1 && !dead){
-        game.death((int)this.x, (int)this.y, (int)other.getHorizontalMovement(), (int)other.getVerticalMovement(), "sprites/dead2.png", false);
+        game.death((int)this.x, (int)this.y, (int)other.getHorizontalMovement(), (int)other.getVerticalMovement(), "sprites/dead2.png", 1.5);
         dead = true;
         game.alienDead();
         game.removeEntity(this);
