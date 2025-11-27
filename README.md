@@ -16,5 +16,4 @@ code sources:
 
 to be added:
 - this or that powerup choices after new levels
-- new enemy types
 - bosses
