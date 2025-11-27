@@ -725,13 +725,18 @@ long lasttime = 0;
     }
 
     for (int i = 0; i < round; i++){
-        if ((int) (Math.random() * 3) == 1){
+      int random = (int) (Math.random() * 4);
+        if (random == 1){
           alien2 aliena = new alien2(this, alienSpawners[0]+i*20, alienSpawners[1], round); 
           entities.add(aliena);
           alienN++;
-        } else if ((int) (Math.random() * 3) == 2){
+        } else if (random == 2){
           alien1 alienb = new alien1(this, alienSpawners[2], alienSpawners[3]+i*30, round);
           entities.add(alienb);
+          alienN++;
+        } else if (random == 3){
+          alien4 aliend = new alien4(this, alienSpawners[2]+i*25, alienSpawners[1], round);
+          entities.add(aliend);
           alienN++;
         } else {
           if (a3count < 2 && round > 4){
@@ -744,7 +749,7 @@ long lasttime = 0;
             alien2 aliena = new alien2(this, alienSpawners[0]+i*20, alienSpawners[1], round); 
             entities.add(aliena);
             alienN++;
-          } else if ((int) (Math.random() * 3) == 0){
+          } else {
             alien1 alienb = new alien1(this, alienSpawners[2], alienSpawners[3]+i*30, round);
             entities.add(alienb);
             alienN++;

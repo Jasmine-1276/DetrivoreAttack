@@ -102,7 +102,7 @@ public class ShipEntity extends Entity {
 
     if (other instanceof splat) {
       count++;
-      if (count > 4){
+      if (count > 1){
         hit();
         count = 0;
       } 

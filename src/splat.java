@@ -5,7 +5,7 @@ public class splat extends Entity{
     
     // Static sprite cache - loaded once
     private static Sprite[] goop = new Sprite[5];
-    private static splat[] pool = new splat[20];  // Object pool
+    private static splat[] pool = new splat[40];  // Object pool
     private static int poolIndex = 0;
     private boolean inUse = false;
     
@@ -63,7 +63,7 @@ public class splat extends Entity{
 
     public void move (long delta){
         Time += delta;
-        if (Time > 2000000000L){
+        if (Time > 4000000000L){
             game.removeEntity(this);
             inUse = false;  // Mark as available for reuse in pool
         }
