@@ -1,4 +1,6 @@
-just run the jar. everything is in there. (use jdk 23.0.1+)
+how to build/run:
+option a: download latest jar, run it with JDK 23.0.1+
+option b: clone git repository, run "./build.sh run" to build & run (creates jar)
 
 sound sources:
 - Tony Hawk Pro Skater (combo sound)
